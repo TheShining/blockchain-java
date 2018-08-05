@@ -459,7 +459,7 @@ public class Block {
       ```
     int nonce = mine(genesis);
     Block block = new Block(list.size() + 1, genesis, HashUtils.sha256(nonce + genesis), nonce);
-
+    
       ```
 
 
@@ -517,9 +517,7 @@ $("#idTbody").append("<tr><th>" + id + "</th><td>" + content + "</td><td>" + has
 
 # 五、     区块链V4形成区块链
 
-本节继续增加黑客攻击的难度, 每个区块都持有上个区块的Hash值,互相咬合,形成一个链条.这样当链条足够长的时候,会大大增加黑客攻击的难度.
-
-​                      IMG                              
+​本节继续增加黑客攻击的难度, 每个区块都持有上个区块的Hash值,互相咬合,形成一个链条.这样当链条足够长的时候,会大大增加黑客攻击的难度.        ![IMG](https://github.com/caisededan/img-storage/blob/master/blockchain/01-hash.png?raw=true)                              
 
 ## 1.   修改实体类,增加preHash字段
 
@@ -567,7 +565,7 @@ public class Block {
         if (list.size() < 1) {
             throw new RuntimeException("添加交易记录的时候,必须保证账本已经有封面了");
         }
-
+    
         Block preBlock = list.get(list.size() - 1);
         String preHash = preBlock.hash;
         int nonce = mine(preHash + note);
@@ -575,7 +573,7 @@ public class Block {
         list.add(block);
         save2Disk();
     }
-
+    
     ```
 
 
@@ -975,7 +973,7 @@ jsrsasign插件 : <https://github.com/kjur/jsrsasign>
 
 # 八、     WebSocket简介
 
-​     IMG
+​     ![IMG](https://github.com/caisededan/img-storage/blob/master/blockchain/02-%E6%8C%96%E7%9F%BF%E6%B5%81%E7%A8%8B%E4%BD%93%E7%B3%BB.png?raw=true)
 
 前面的章节章节中,我们的转账信息和生成的区块只是保存在本地,事实上我们需要把这些信息广播出去,告知其他节点.其他节点上的转账信息和生成的区块也要告知我们,这样我们就需要通过WebSocket和其他节点之间进行通信.
 
@@ -1136,13 +1134,13 @@ public class WsdemoApplication {
 
 编辑配置
 
- IMG
+ ![IMG](https://github.com/caisededan/img-storage/blob/master/blockchain/03-%E7%BC%96%E8%BE%91%E9%85%8D%E7%BD%AE.png?raw=true)
 
    
 
 找到对应的Application类,修改配置
 
-   IMG
+   ![IMG](https://github.com/caisededan/img-storage/blob/master/blockchain/04-%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE.png?raw=true)
 
 ## 3.   创建Controller,实现注册节点 / 连接 / 广播功能
 
